@@ -24,7 +24,7 @@ class DataLoader:
 
     def __iter__(self):
         """ With each iteration returns a batch of samples. 
-        After getting batch, increase iterator by given batch size. """
+        After getting batch, increases iterator by given batch size. """
         for _ in range(self._num_batches):
             batch = self.dataset[self._iterator:self._iterator + self.batch_size]
             self._iterator += self.batch_size
