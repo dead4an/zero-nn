@@ -3,9 +3,9 @@ from .layer import Layer
 
 
 class ReLU(Layer):
-    def forward(self, x: np.ndarray):
-        self.x = x
-        return max(0, x)
+    def forward(self, input_matrix: np.ndarray):
+        self.input_matrix = input_matrix
+        return np.maximum(0, input_matrix)
     
-    def backward(self, output_gradient: np.ndarray):
-        return output_gradient * (self.x >= 0)
+    def backward(self, output_gradient: np.ndarray, learning_rate: float):
+        return learning_rate * output_gradient * (self.input_matrix > 0)

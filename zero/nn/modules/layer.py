@@ -1,9 +1,14 @@
-class Layer:
+from abc import ABCMeta, abstractmethod
+
+
+class Layer(metaclass=ABCMeta):
     """ Base layer of neural network. """
-    def forward(self):
+    @abstractmethod 
+    def forward(self, *args, **kwargs):
         """ Forward propagation method. """
         pass
 
-    def backward(self):
+    @abstractmethod
+    def backward(self, *args, **kwargs):
         """ Backward propagation method. """
         pass
