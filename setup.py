@@ -6,7 +6,7 @@ setup(
     description='Machine learning python package',
     url='https://github.com/dead4an/zero-nn',
     packages=find_packages(),
-    requires=[
+    install_requires=[
         'numpy',
         'pandas',
         'pyarrow'
