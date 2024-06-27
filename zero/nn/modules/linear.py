@@ -23,9 +23,9 @@ class Linear(Layer):
         """ Back propagation method. """
         # Update self parameters
         weights_gradient = output_gradient @ self.input_matrix.T
+        output_gradient = self.weights.T @ output_gradient
         self.weights -= learning_rate * weights_gradient
         self.bias -= output_gradient.sum(axis=1, keepdims=True)
 
         # Pass output gradient to previous layer
-        output_gradient = self.weights.T @ output_gradient
         return output_gradient
