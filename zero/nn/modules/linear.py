@@ -24,9 +24,7 @@ class Linear(Layer):
         # Update self parameters
         weights_gradient = output_gradient @ self.input_matrix.T
         self.weights -= learning_rate * weights_gradient
-
-        # NOTE: check bias update or replace with better
-        self.bias = output_gradient.mean(axis=1).reshape(self.output_dim, 1)
+        self.bias -= output_gradient.sum(axis=1, keepdims=True)
 
         # Pass output gradient to previous layer
         output_gradient = self.weights.T @ output_gradient

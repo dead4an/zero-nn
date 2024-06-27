@@ -10,4 +10,4 @@ class MSE(Layer):
         return (1 / len(y_true)) * np.sum(np.power(y_pred - y_true, 2))
     
     def backward(self):
-        return (2 / len(self.y_pred)) * np.sum(self.y_pred - self.y_true)
+        return (len(self.y_true) / 2) * (self.y_pred - self.y_true)
