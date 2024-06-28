@@ -12,3 +12,6 @@ class Layer(metaclass=ABCMeta):
     def backward(self, *args, **kwargs):
         """ Backward propagation method. """
         pass
+
+    def __call__(self, *args, **kwargs):
+        return self.forward(*args, **kwargs)
