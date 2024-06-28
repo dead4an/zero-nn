@@ -21,11 +21,14 @@ class Linear(Layer):
 
     def backward(self, output_gradient: np.ndarray, learning_rate: float):
         """ Back propagation method. """
-        # Update self parameters
+        # Calculate gradients
         weights_gradient = output_gradient @ self.input_matrix.T
+        bias_gradient = output_gradient.sum(axis=1, keepdims=True)
         output_gradient = self.weights.T @ output_gradient
-        self.weights -= learning_rate * weights_gradient
-        self.bias -= output_gradient.sum(axis=1, keepdims=True)
 
+        # Update parameters
+        self.weights -= learning_rate * weights_gradient
+        self.bias -= learning_rate * bias_gradient
+        
         # Pass output gradient to previous layer
         return output_gradient
